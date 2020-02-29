@@ -1,8 +1,6 @@
-# Run2VBSWGamma_ntuple for jes/r uncertainties
+cmsrel CMSSW_10_2_18
 
-cmsrel CMSSW_9_4_13
-
-cd CMSSW_9_4_13/src
+cd CMSSW_10_2_18/src
 
 cmsenv
 
@@ -10,6 +8,6 @@ git cms-init
 
 git cms-merge-topic cms-egamma:EgammaPostRecoTools
 
-git cms-merge-topic cms-met:METFixEE2017_949_v2
+git-cms-addpkg RecoEgamma/PhotonIdentification
 
-git clone https://github.com/qianminghuang/VBSWA_JESR-94X.git VAJets
+svn checkout https://github.com/JINGFFF/test/trunk/16/VAJets
