@@ -96,10 +96,11 @@ ElectronIdSelector::ElectronIdSelector(const edm::ParameterSet& iConfig)
   	produces<std::vector<pat::Electron> >();
 
   	/// ------- Decode the ID criteria --------
-  	applyTightID_ = false;
-  	applyMediumID_ = false;
-  	applyLooseID_ = false;
-  	applyVetoID_ = false;
+  	applyTightID_ 	= false;
+  	applyMediumID_ 	= false;
+  	applyLooseID_ 	= false;
+  	applyVetoID_ 	= false;
+    applyFakeID_    = false;
 
   	if( (idLabel_.compare("tight")==0) || 
       	(idLabel_.compare("Tight")==0) || 

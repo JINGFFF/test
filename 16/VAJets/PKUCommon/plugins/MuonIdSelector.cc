@@ -83,8 +83,9 @@ MuonIdSelector::MuonIdSelector(const edm::ParameterSet& iConfig)
   	produces<std::vector<pat::Muon> >();
 
   	/// ------- Decode the ID criteria --------
-  	applyTightID_ = false;
-  	applyLooseID_ = false;
+  	applyTightID_ 	= false;
+  	applyLooseID_ 	= false;
+    applyFakeID_ 	= false;
 
   	if( (idLabel_.compare("tight")==0) || 
       	(idLabel_.compare("Tight")==0) || 
