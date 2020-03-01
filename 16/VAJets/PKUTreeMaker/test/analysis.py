@@ -15,11 +15,8 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 
 from Configuration.AlCa.GlobalTag import GlobalTag
 if runOnMC:
-#   process.GlobalTag.globaltag = '80X_mcRun2_asymptotic_2016_TrancheIV_v8'
    process.GlobalTag.globaltag = '94X_mcRun2_asymptotic_v3'
-#   process.GlobalTag.globaltag = '94X_mc2017_realistic_v17'
 elif not(runOnMC):
-#   process.GlobalTag.globaltag = '80X_dataRun2_2016SeptRepro_v7'
    process.GlobalTag.globaltag = '94X_dataRun2_v10'
 
 ##########			                                                             
@@ -187,16 +184,15 @@ process.load("RecoEgamma/PhotonIdentification/photonIDValueMapProducer_cff")
 #                           )
    
 # L1 prefiring
-#process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
-#                                 ThePhotons = cms.InputTag("slimmedPhotons"),
-#                                 TheJets = cms.InputTag("slimmedJets"),
-#                                L1Maps = cms.string(relBase+"/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"),
-#                                 L1Maps = cms.string("L1PrefiringMaps_new.root"), # update this line with the location of this file
-                                 #L1Maps = cms.string("CMSSW_8_0_32/src/L1Prefiring/EventWeightProducer/data/L1PrefiringMaps_new.root"),
-#                                 DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
-#                                 UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
-#                                 PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
-#                                 )
+process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
+                                 ThePhotons = cms.InputTag("slimmedPhotons"),
+                               	 TheJets = cms.InputTag("slimmedJets"),
+								 #L1Maps = cms.string(relBase+"/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"),
+                                 L1Maps = cms.string("L1PrefiringMaps_new.root"), # update this line with the location of this file
+                                 DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
+                                 UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
+                                 PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
+                                 )
 
 
 process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
@@ -205,7 +201,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     targetLumiInvPb = cms.double(1.0),
                                     PKUChannel = cms.string("VW_CHANNEL"),
                                     isGen = cms.bool(False),
-				    RunOnMC = cms.bool(runOnMC), 
+				    				RunOnMC = cms.bool(runOnMC), 
                                     generator =  cms.InputTag("generator"),
                                     genJet =  cms.InputTag("slimmedGenJets"),
                                     lhe =  cms.InputTag("externalLHEProducer"),  #for multiple weight
@@ -213,7 +209,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     leptonicVSrc = cms.InputTag("leptonicV"),
                                     rho = cms.InputTag("fixedGridRhoFastjetAll"),   
                                     ak4jetsSrc = cms.InputTag("cleanAK4Jets"),      
-#                                    photonSrc = cms.InputTag("goodPhotons"),
+									#photonSrc = cms.InputTag("goodPhotons"),
                                     photonSrc = cms.InputTag("slimmedPhotons"),
                                     genSrc =  cms.InputTag("prunedGenParticles"),  
                                     jecAK4chsPayloadNames = cms.vstring( jecLevelsAK4chs ),
@@ -229,23 +225,23 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     beamSpot = cms.InputTag("offlineBeamSpot","","RECO"),
                                     loosemuonSrc = cms.InputTag("looseMuons"),
 
-				    goodmuonSrc = cms.InputTag("goodMuons"),
+				    				goodmuonSrc = cms.InputTag("goodMuons"),
                                     goodeleSrc = cms.InputTag("goodElectrons"),
 
                                     hltToken    = cms.InputTag("TriggerResults","","HLT"),
                                     elPaths1     = cms.vstring("HLT_Ele23_WPTight_Gsf_v*"),
                                     elPaths2     = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
                                     muPaths1     = cms.vstring("HLT_IsoMu20_v*","HLT_IsoTkMu20_v*"),
-#                                    muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
+									#muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
                                     muPaths2     = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
                                     muPaths3     = cms.vstring("HLT_IsoMu27_v*","HLT_IsoTkMu27_v*"),
-				    noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
-				    noiseFilterSelection_HBHENoiseFilter = cms.string('Flag_HBHENoiseFilter'),
+				    				noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
+				    				noiseFilterSelection_HBHENoiseFilter = cms.string('Flag_HBHENoiseFilter'),
                                     noiseFilterSelection_HBHENoiseIsoFilter = cms.string("Flag_HBHENoiseIsoFilter"),
-				    noiseFilterSelection_globalTightHaloFilter = cms.string('Flag_globalTightHalo2016Filter'),
+				    				noiseFilterSelection_globalTightHaloFilter = cms.string('Flag_globalTightHalo2016Filter'),
                                     noiseFilterSelection_EcalDeadCellTriggerPrimitiveFilter = cms.string('Flag_EcalDeadCellTriggerPrimitiveFilter'),
-				    noiseFilterSelection_goodVertices = cms.string('Flag_goodVertices'),
-				    noiseFilterSelection_eeBadScFilter = cms.string('Flag_eeBadScFilter'),
+				    				noiseFilterSelection_goodVertices = cms.string('Flag_goodVertices'),
+				    				noiseFilterSelection_eeBadScFilter = cms.string('Flag_eeBadScFilter'),
                                     noiseFilterSelection_badMuon = cms.InputTag('BadPFMuonFilter'),
                                     noiseFilterSelection_badChargedHadron = cms.InputTag('BadChargedCandidateFilter'),
                                     full5x5SigmaIEtaIEtaMap   = cms.InputTag("photonIDValueMapProducer:phoFull5x5SigmaIEtaIEta"),
@@ -258,16 +254,15 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     )
 
 process.analysis = cms.Path(
-#                            process.goodOfflinePrimaryVertex +
-			    process.JetUserData +
+							#process.goodOfflinePrimaryVertex +
+			    			process.JetUserData +
                             process.leptonSequence +
                             process.jetSequence +
                             process.metfilterSequence + #*process.treeDumper)
                             process.prefiringweight*process.treeDumper)
-#                           process.photonSequence +
-#                            process.photonIDValueMapProducer*process.treeDumper
-
-#                            process.photonIDValueMapProducer*process.treeDumper)
+							#process.photonSequence +
+							#process.photonIDValueMapProducer*process.treeDumper
+							#process.photonIDValueMapProducer*process.treeDumper)
 ### Source
 process.load("VAJets.PKUCommon.data.RSGravitonToWW_kMpl01_M_1000_Tune4C_13TeV_pythia8")
 process.source.fileNames = [
