@@ -55,7 +55,7 @@ private:
   	std::string    	idLabel_;  
   	bool           	applyTightID_;
   	bool           	applyLooseID_;
-	bool			applyFakeID;
+	bool			applyFakeID_;
 
   	unsigned int nTot_;
   	unsigned int nPassed_;

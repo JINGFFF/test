@@ -131,7 +131,7 @@ ElectronIdSelector::ElectronIdSelector(const edm::ParameterSet& iConfig)
 
     else if( (idLabel_.compare("fake")==0) ||
         (idLabel_.compare("Fake")==0) ||
-        (idLabel_.compare("FAKE")==0) || )
+        (idLabel_.compare("FAKE")==0) )
     applyFakeID_ = true;
 }
 
