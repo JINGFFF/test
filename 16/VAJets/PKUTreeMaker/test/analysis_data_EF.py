@@ -15,11 +15,8 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 
 from Configuration.AlCa.GlobalTag import GlobalTag
 if runOnMC:
-#   process.GlobalTag.globaltag = '80X_mcRun2_asymptotic_2016_TrancheIV_v8'
    process.GlobalTag.globaltag = '94X_mcRun2_asymptotic_v3'
-#   process.GlobalTag.globaltag = '94X_mc2017_realistic_v17'
 elif not(runOnMC):
-#   process.GlobalTag.globaltag = '80X_dataRun2_2016SeptRepro_v7'
    process.GlobalTag.globaltag = '94X_dataRun2_v10'
 
 ##########			                                                             
@@ -75,27 +72,27 @@ triggerSummaryLabel      = "hltTriggerSummaryAOD"
 hltProcess = "HLT"
 if runOnMC:
    jecLevelsAK4chs = [
-          'Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt',
-          'Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt',
-          'Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt'
+          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'Summer16_23Sep2016V4_MC_L1FastJet_AK4PFPuppi.txt',
-          'Summer16_23Sep2016V4_MC_L2Relative_AK4PFPuppi.txt',
-          'Summer16_23Sep2016V4_MC_L3Absolute_AK4PFPuppi.txt'
+          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFPuppi.txt'
     ]
 else:
    jecLevelsAK4chs = [
-          'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt',
-          'Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt',
-          'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt',
-          'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFPuppi.txt',
-          'Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFPuppi.txt',
-          'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFPuppi.txt',
-          'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
@@ -152,7 +149,7 @@ process.leptonicVSelector = cms.EDFilter("CandViewSelector",
 process.leptonicVFilter = cms.EDFilter("CandViewCountFilter",
                                        src = cms.InputTag("leptonicV"),
                                        minNumber = cms.uint32(0),
-                                       filter = cms.bool(False)
+                                       #filter = cms.bool(False)
                                        )
 
 
@@ -205,7 +202,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     targetLumiInvPb = cms.double(1.0),
                                     PKUChannel = cms.string("VW_CHANNEL"),
                                     isGen = cms.bool(False),
-				    RunOnMC = cms.bool(runOnMC), 
+				    				RunOnMC = cms.bool(runOnMC), 
                                     generator =  cms.InputTag("generator"),
                                     genJet =  cms.InputTag("slimmedGenJets"),
                                     lhe =  cms.InputTag("externalLHEProducer"),  #for multiple weight
@@ -229,7 +226,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     beamSpot = cms.InputTag("offlineBeamSpot","","RECO"),
                                     loosemuonSrc = cms.InputTag("looseMuons"),
 
-				    goodmuonSrc = cms.InputTag("goodMuons"),
+				    				goodmuonSrc = cms.InputTag("goodMuons"),
                                     goodeleSrc = cms.InputTag("goodElectrons"),
 
                                     hltToken    = cms.InputTag("TriggerResults","","HLT"),
@@ -239,13 +236,13 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
 #                                    muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
                                     muPaths2     = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
                                     muPaths3     = cms.vstring("HLT_IsoMu27_v*","HLT_IsoTkMu27_v*"),
-				    noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
-				    noiseFilterSelection_HBHENoiseFilter = cms.string('Flag_HBHENoiseFilter'),
+				    				noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
+				    				noiseFilterSelection_HBHENoiseFilter = cms.string('Flag_HBHENoiseFilter'),
                                     noiseFilterSelection_HBHENoiseIsoFilter = cms.string("Flag_HBHENoiseIsoFilter"),
-				    noiseFilterSelection_globalTightHaloFilter = cms.string('Flag_globalTightHalo2016Filter'),
+				    				noiseFilterSelection_globalTightHaloFilter = cms.string('Flag_globalTightHalo2016Filter'),
                                     noiseFilterSelection_EcalDeadCellTriggerPrimitiveFilter = cms.string('Flag_EcalDeadCellTriggerPrimitiveFilter'),
-				    noiseFilterSelection_goodVertices = cms.string('Flag_goodVertices'),
-				    noiseFilterSelection_eeBadScFilter = cms.string('Flag_eeBadScFilter'),
+				    				noiseFilterSelection_goodVertices = cms.string('Flag_goodVertices'),
+				    				noiseFilterSelection_eeBadScFilter = cms.string('Flag_eeBadScFilter'),
                                     noiseFilterSelection_badMuon = cms.InputTag('BadPFMuonFilter'),
                                     noiseFilterSelection_badChargedHadron = cms.InputTag('BadChargedCandidateFilter'),
                                     full5x5SigmaIEtaIEtaMap   = cms.InputTag("photonIDValueMapProducer:phoFull5x5SigmaIEtaIEta"),
@@ -259,7 +256,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
 
 process.analysis = cms.Path(
 #                            process.goodOfflinePrimaryVertex +
-			    process.JetUserData +
+			    			process.JetUserData +
                             process.leptonSequence +
                             process.jetSequence +
                             process.metfilterSequence + #*process.treeDumper)
@@ -268,6 +265,7 @@ process.analysis = cms.Path(
 #                            process.photonIDValueMapProducer*process.treeDumper
 
 #                            process.photonIDValueMapProducer*process.treeDumper)
+
 ### Source
 process.load("VAJets.PKUCommon.data.RSGravitonToWW_kMpl01_M_1000_Tune4C_13TeV_pythia8")
 process.source.fileNames = [
