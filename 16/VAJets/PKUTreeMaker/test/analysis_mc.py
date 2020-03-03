@@ -4,7 +4,7 @@ process = cms.Process( "TEST" )
 process.options = cms.untracked.PSet(wantSummary = cms.untracked.bool(True),
 				     SkipEvent = cms.untracked.vstring('ProductNotFound'))
 corrJetsOnTheFly = True
-runOnMC = False
+runOnMC = True
 chsorpuppi = True  # AK4Chs or AK4Puppi
 #****************************************************************************************************#
 process.load("Configuration.StandardSequences.GeometryRecoDB_cff")
@@ -83,16 +83,16 @@ if runOnMC:
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017EFV11_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017EFV11_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017BCDV11_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
@@ -176,7 +176,7 @@ if chsorpuppi:
 else:
       ak4jecsrc = jecLevelsAK4puppi
 
-process.load("RecoEgamma/PhotonIdentification/PhotonIDValueMapProducer_cfi")
+process.load("RecoEgamma/PhotonIdentification/photonIDValueMapProducer_cff")
 #from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD 
 ## Example 1: If you only want to re-correct MET and get the proper uncertainties [e.g. when updating JEC]
 #runMetCorAndUncFromMiniAOD(process,
@@ -186,10 +186,9 @@ process.load("RecoEgamma/PhotonIdentification/PhotonIDValueMapProducer_cfi")
 # L1 prefiring
 #process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
 #                                 ThePhotons = cms.InputTag("slimmedPhotons"),
-#                                 TheJets = cms.InputTag("slimmedJets"),
-#                                L1Maps = cms.string(relBase+"/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"),
+#                               	 TheJets = cms.InputTag("slimmedJets"),
+#								 #L1Maps = cms.string(relBase+"/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"),
 #                                 L1Maps = cms.string("L1PrefiringMaps_new.root"), # update this line with the location of this file
-                                 #L1Maps = cms.string("CMSSW_8_0_32/src/L1Prefiring/EventWeightProducer/data/L1PrefiringMaps_new.root"),
 #                                 DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
 #                                 UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
 #                                 PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
@@ -210,7 +209,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     leptonicVSrc = cms.InputTag("leptonicV"),
                                     rho = cms.InputTag("fixedGridRhoFastjetAll"),   
                                     ak4jetsSrc = cms.InputTag("cleanAK4Jets"),      
-#                                    photonSrc = cms.InputTag("goodPhotons"),
+									#photonSrc = cms.InputTag("goodPhotons"),
                                     photonSrc = cms.InputTag("slimmedPhotons"),
                                     genSrc =  cms.InputTag("prunedGenParticles"),  
                                     jecAK4chsPayloadNames = cms.vstring( jecLevelsAK4chs ),
@@ -233,7 +232,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     elPaths1     = cms.vstring("HLT_Ele23_WPTight_Gsf_v*"),
                                     elPaths2     = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
                                     muPaths1     = cms.vstring("HLT_IsoMu20_v*","HLT_IsoTkMu20_v*"),
-#                                    muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
+									#muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
                                     muPaths2     = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
                                     muPaths3     = cms.vstring("HLT_IsoMu27_v*","HLT_IsoTkMu27_v*"),
 				    				noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
@@ -255,17 +254,15 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     )
 
 process.analysis = cms.Path(
-#                            process.goodOfflinePrimaryVertex +
+							#process.goodOfflinePrimaryVertex +
 			    			process.JetUserData +
                             process.leptonSequence +
                             process.jetSequence +
                             process.metfilterSequence + #*process.treeDumper)
                             process.prefiringweight*process.treeDumper)
-#                           process.photonSequence +
-#                            process.photonIDValueMapProducer*process.treeDumper
-
-#                            process.photonIDValueMapProducer*process.treeDumper)
-
+							#process.photonSequence +
+							#process.photonIDValueMapProducer*process.treeDumper
+							#process.photonIDValueMapProducer*process.treeDumper)
 ### Source
 process.load("VAJets.PKUCommon.data.RSGravitonToWW_kMpl01_M_1000_Tune4C_13TeV_pythia8")
 process.source.fileNames = [
@@ -276,7 +273,7 @@ process.source.fileNames = [
 "/store/mc/RunIISummer16MiniAODv3/WGToLNuG_01J_5f_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/70000/FADCF3F9-6247-E911-A86D-EC0D9A80980A.root"
 ]
 
-process.maxEvents.input = 100  #-1
+process.maxEvents.input = 1000  #-1
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.MessageLogger.cerr.FwkReport.reportEvery = 10
 process.MessageLogger.cerr.FwkReport.limit = 99999999

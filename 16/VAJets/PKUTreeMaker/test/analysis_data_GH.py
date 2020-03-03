@@ -83,16 +83,16 @@ if runOnMC:
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017EFV11_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Summer16_07Aug2017GHV11_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017EFV11_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017EFV11_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Summer16_07Aug2017GHV11_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GHV11_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
