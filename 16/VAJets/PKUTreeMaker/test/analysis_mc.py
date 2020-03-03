@@ -65,7 +65,8 @@ else:
       jLabel = "slimmedJetsPuppi"
       jetAlgo    = 'AK4PFPuppi'
 
-jer_era = "Summer16_23Sep2016V3_MC"
+jer_era = "Summer16_07Aug2017_V11_MC"
+#jer_era = "Summer16_07Aug2017_V11_MC"
 #jer_era = "Fall17_17Nov2017_V32_MC"
 triggerResultsLabel      = "TriggerResults"
 triggerSummaryLabel      = "hltTriggerSummaryAOD"

@@ -65,34 +65,34 @@ else:
       jLabel = "slimmedJetsPuppi"
       jetAlgo    = 'AK4PFPuppi'
 
-jer_era = "Summer16_23Sep2016V3_MC"
+jer_era = "Autumn18_V19_MC"
 #jer_era = "Fall17_17Nov2017_V32_MC"
 triggerResultsLabel      = "TriggerResults"
 triggerSummaryLabel      = "hltTriggerSummaryAOD"
 hltProcess = "HLT"
 if runOnMC:
    jecLevelsAK4chs = [
-          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt'
+          'JEC/Autumn18_Run_V19_MC_L1FastJet_AK4PFchs.txt',
+          'JEC/Autumn18_Run_V19_MC_L2Relative_AK4PFchs.txt',
+          'JEC/Autumn18_Run_V19_MC_L3Absolute_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFPuppi.txt'
+          'JEC/Autumn18_Run_V19_MC_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Autumn18_Run_V19_MC_L2Relative_AK4PFPuppi.txt',
+          'JEC/Autumn18_Run_V19_MC_L3Absolute_AK4PFPuppi.txt'
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
@@ -176,7 +176,7 @@ if chsorpuppi:
 else:
       ak4jecsrc = jecLevelsAK4puppi
 
-process.load("RecoEgamma/PhotonIdentification/photonIDValueMapProducer_cfi")
+process.load("RecoEgamma/PhotonIdentification/PhotonIDValueMapProducer_cfi")
 #from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD 
 ## Example 1: If you only want to re-correct MET and get the proper uncertainties [e.g. when updating JEC]
 #runMetCorAndUncFromMiniAOD(process,
@@ -233,7 +233,7 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     elPaths1     = cms.vstring("HLT_Ele23_WPTight_Gsf_v*"),
                                     elPaths2     = cms.vstring("HLT_Ele27_WPTight_Gsf_v*"),
                                     muPaths1     = cms.vstring("HLT_IsoMu20_v*","HLT_IsoTkMu20_v*"),
-									#muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
+#                                    muPaths2     = cms.vstring("HLT_IsoMu22_v*","HLT_IsoTkMu22_v*"),
                                     muPaths2     = cms.vstring("HLT_IsoMu24_v*","HLT_IsoTkMu24_v*"),
                                     muPaths3     = cms.vstring("HLT_IsoMu27_v*","HLT_IsoTkMu27_v*"),
 				    				noiseFilter = cms.InputTag('TriggerResults','', hltFiltersProcessName),
@@ -255,16 +255,16 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     )
 
 process.analysis = cms.Path(
-							#process.goodOfflinePrimaryVertex +
+#                            process.goodOfflinePrimaryVertex +
 			    			process.JetUserData +
                             process.leptonSequence +
                             process.jetSequence +
                             process.metfilterSequence + #*process.treeDumper)
                             process.prefiringweight*process.treeDumper)
-							#process.photonSequence +
-							#process.photonIDValueMapProducer*process.treeDumper
+#                           process.photonSequence +
+#                            process.photonIDValueMapProducer*process.treeDumper
 
-							#process.photonIDValueMapProducer*process.treeDumper)
+#                            process.photonIDValueMapProducer*process.treeDumper)
 
 ### Source
 process.load("VAJets.PKUCommon.data.RSGravitonToWW_kMpl01_M_1000_Tune4C_13TeV_pythia8")

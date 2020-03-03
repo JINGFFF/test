@@ -65,34 +65,34 @@ else:
       jLabel = "slimmedJetsPuppi"
       jetAlgo    = 'AK4PFPuppi'
 
-jer_era = "Summer16_23Sep2016V3_MC"
+jer_era = "Fall17_17Nov2017_V32_MC"
 #jer_era = "Fall17_17Nov2017_V32_MC"
 triggerResultsLabel      = "TriggerResults"
 triggerSummaryLabel      = "hltTriggerSummaryAOD"
 hltProcess = "HLT"
 if runOnMC:
    jecLevelsAK4chs = [
-          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt'
+          'JEC/Fall17_17Nov2017_V32_MC_L1FastJet_AK4PFchs.txt',
+          'JEC/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFchs.txt',
+          'JEC/Fall17_17Nov2017_V32_MC_L3Absolute_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_23Sep2016V4_MC_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016V4_MC_L3Absolute_AK4PFPuppi.txt'
+          'JEC/Fall17_17Nov2017_V32_MC_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi.txt',
+          'JEC/Fall17_17Nov2017_V32_MC_L3Absolute_AK4PFPuppi.txt'
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Fall17_17Nov2017F_V32_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Fall17_17Nov2017F_V32_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Fall17_17Nov2017F_V32_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
