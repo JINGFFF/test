@@ -72,27 +72,27 @@ triggerSummaryLabel      = "hltTriggerSummaryAOD"
 hltProcess = "HLT"
 if runOnMC:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017V11_MC_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017V11_MC_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017V11_MC_L3Absolute_AK4PFchs.txt'
+          'JEC/Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017_V11_MC_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017V11_MC_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017V11_MC_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017V11_MC_L3Absolute_AK4PFPuppi.txt'
+          'JEC/Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017_V11_MC_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFPuppi.txt'
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017GHV11_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L2L3Residual_AK4PFchs.txt'
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFchs.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017GHV11_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GHV11_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFPuppi.txt',
+          'JEC/Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 
