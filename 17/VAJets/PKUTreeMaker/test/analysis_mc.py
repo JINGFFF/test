@@ -15,9 +15,9 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 
 from Configuration.AlCa.GlobalTag import GlobalTag
 if runOnMC:
-   process.GlobalTag.globaltag = '94X_mcRun2_asymptotic_v3'
+   process.GlobalTag.globaltag = '94X_mc2017_realistic_v17'
 elif not(runOnMC):
-   process.GlobalTag.globaltag = '94X_dataRun2_v10'
+   process.GlobalTag.globaltag = '94X_dataRun2_v11'
 
 ##########			                                                             
 hltFiltersProcessName = 'RECO'
@@ -270,7 +270,7 @@ process.source.fileNames = [
 #"/store/mc/RunIISummer16MiniAODv2/WGToLNuG_01J_5f_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/40000/A0C1C471-E704-E811-A1F2-008CFAF292B0.root"   #root://cms-xrd-global.cern.ch/
 #"/store/mc/RunIISummer16MiniAODv2/WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext2-v2/00000/EC2D608D-622A-E711-A658-002590D9D984.root"
 #"/store/mc/RunIISummer16MiniAODv2/WGJJToLNuGJJ_EWK_aQGC-FS-FM_TuneCUETP8M1_13TeV-madgraph-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/F205A9E7-0BCE-E611-8617-008CFA5D275C.root"
-"/store/mc/RunIISummer16MiniAODv3/WGToLNuG_01J_5f_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/70000/FADCF3F9-6247-E911-A86D-EC0D9A80980A.root"
+"/store/mc/RunIISummer16MiniAODv3/WGToLNuG_01J_5f_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PUMoriond17_94X_mc2017_realistic_v17-v1/70000/FADCF3F9-6247-E911-A86D-EC0D9A80980A.root"
 ]
 
 process.maxEvents.input = 1000  #-1

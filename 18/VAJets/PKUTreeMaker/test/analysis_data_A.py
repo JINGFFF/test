@@ -17,7 +17,7 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 if runOnMC:
    process.GlobalTag.globaltag = '94X_mcRun2_asymptotic_v3'
 elif not(runOnMC):
-   process.GlobalTag.globaltag = '94X_dataRun2_v10'
+   process.GlobalTag.globaltag = '102X_upgrade2018_realistic_v20'
 
 ##########			                                                             
 hltFiltersProcessName = 'RECO'
