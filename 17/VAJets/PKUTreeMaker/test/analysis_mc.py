@@ -184,16 +184,36 @@ process.load("RecoEgamma/PhotonIdentification/photonIDValueMapProducer_cff")
 #                           )
    
 # L1 prefiring
-#process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
-#                                 ThePhotons = cms.InputTag("slimmedPhotons"),
-#                               	 TheJets = cms.InputTag("slimmedJets"),
-#								 #L1Maps = cms.string(relBase+"/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"),
-#                                 L1Maps = cms.string("L1PrefiringMaps_new.root"), # update this line with the location of this file
-#                                 DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
-#                                 UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
-#                                 PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
-#                                 )
+from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
+process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
+    DataEra = cms.string("2017BtoF"), #Use 2016BtoH for 2016
+    UseJetEMPt = cms.bool(False),
+    PrefiringRateSystematicUncty = cms.double(0.2),
+    SkipWarnings = False)
 
+#EcalBadCalibFilter
+process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
+
+baddetEcallist = cms.vuint32(
+    [872439604,872422825,872420274,872423218,
+     872423215,872416066,872435036,872439336,
+     872420273,872436907,872420147,872439731,
+     872436657,872420397,872439732,872439339,
+     872439603,872422436,872439861,872437051,
+     872437052,872420649,872422436,872421950,
+     872437185,872422564,872421566,872421695,
+     872421955,872421567,872437184,872421951,
+     872421694,872437056,872437057,872437313])
+
+
+process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
+    "EcalBadCalibFilter",
+    EcalRecHitSource = cms.InputTag("reducedEgamma:reducedEERecHits"),
+    ecalMinEt        = cms.double(50.),
+    baddetEcal    = baddetEcallist, 
+    taggingMode = cms.bool(True),
+    debug = cms.bool(False)
+    )
 
 process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     originalNEvents = cms.int32(1),
@@ -254,15 +274,13 @@ process.treeDumper = cms.EDAnalyzer("PKUTreeMaker",
                                     )
 
 process.analysis = cms.Path(
-							#process.goodOfflinePrimaryVertex +
 			    			process.JetUserData +
                             process.leptonSequence +
                             process.jetSequence +
                             process.metfilterSequence + #*process.treeDumper)
+							process.ecalBadCalibReducedMINIAODFilter*
                             process.prefiringweight*process.treeDumper)
-							#process.photonSequence +
-							#process.photonIDValueMapProducer*process.treeDumper
-							#process.photonIDValueMapProducer*process.treeDumper)
+
 ### Source
 process.load("VAJets.PKUCommon.data.RSGravitonToWW_kMpl01_M_1000_Tune4C_13TeV_pythia8")
 process.source.fileNames = [
