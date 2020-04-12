@@ -34,21 +34,10 @@ process.load("VAJets.PKUCommon.leptonicW_cff")
 process.load("VAJets.PKUCommon.goodJets_cff")
 
 #for egamma smearing
-
-#from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
-#setupEgammaPostRecoSeq(process,
-#                       era="2017-Nov17ReReco",
-#                       runVID=True,
-#                       runEnergyCorrections=True,#True: do egamma_modification
-#                       )
-
 from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
-                       runVID=True,
-                       runEnergyCorrections=False, #no point in re-running them, they are already fine
-                       era='2016-Legacy')  #era is new to select between 2016 / 2017,  it defaults to 2017
-
-#for egamma smearing
+						runVID=False, #saves CPU time by not needlessly re-running VID, if you want the Fall17V2 IDs, set this to True or remove (default is True)
+						era='2017-Nov17ReReco')
 
 # If Update
 process.goodMuons.src = "slimmedMuons"
@@ -94,14 +83,6 @@ else:
           'JEC/Fall17_17Nov2017B_V32_DATA_L3Absolute_AK4PFPuppi.txt',
           'JEC/Fall17_17Nov2017B_V32_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
-
-
-from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
-process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
-    DataEra = cms.string("2016BtoH"),   #("2017BtoF"), #Use 2016BtoH for 2016
-    UseJetEMPt = cms.bool(False),
-    PrefiringRateSystematicUncty = cms.double(0.2),
-    SkipWarnings = False)
 
 
 process.JetUserData = cms.EDProducer(

@@ -6,7 +6,7 @@ cmsenv
 
 git cms-init
 
-git cms-merge-topic cms-egamma:EgammaPostRecoTools
+git cms-merge-topic cms-egamma:EgammaPostRecoTools #just adds in an extra file to have a setup function to make things easier
 
 git-cms-addpkg RecoEgamma/PhotonIdentification
 
