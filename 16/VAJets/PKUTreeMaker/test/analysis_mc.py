@@ -39,6 +39,7 @@ setupEgammaPostRecoSeq(process,
 						runVID=True,
 						runEnergyCorrections=False, #no point in re-running them, they are already fine
 						era='2016-Legacy')  #era is new to select between 2016 / 2017,  it defaults to 2017
+#for egamma smearing
 
 # If Update
 process.goodMuons.src = "slimmedMuons"
@@ -139,7 +140,7 @@ process.leptonicVFilter = cms.EDFilter("CandViewCountFilter",
 
 
 process.leptonSequence = cms.Sequence(process.muSequence +
-										process.egammaPostRecoSeq*process.slimmedElectrons*process.slimmedPhotons+
+										process.egammaPostRecoSeq*#process.slimmedElectrons*process.slimmedPhotons+
 										process.eleSequence +
 										process.leptonicVSequence +
 										process.leptonicVSelector +
