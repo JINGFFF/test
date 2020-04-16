@@ -1,0 +1,2 @@
+g++ -o bb `root-config --cflags --glibs` flep.C
+./bb muon or ./bb electron

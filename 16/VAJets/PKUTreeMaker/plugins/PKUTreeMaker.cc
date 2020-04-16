@@ -1881,7 +1881,7 @@ void PKUTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
         bool endcap_medium_hoe      = (*photons)[ip].hadTowOverEm() < 0.0326;
         bool endcap_medium_sieie    = photon_sieie[ip] < 0.0272;
-        bool endcap_medium_chiso    = chiso < 1.051
+        bool endcap_medium_chiso    = chiso < 1.051;
         bool endcap_medium_nhiso    = nhiso < (2.718 + (0.0117 * (*photons)[ip].pt() + 0.000023 * (*photons)[ip].pt() * (*photons)[ip].pt()));
         bool endcap_medium_phoiso   = phoiso < (3.867 + 0.0037 * (*photons)[ip].pt());
 
