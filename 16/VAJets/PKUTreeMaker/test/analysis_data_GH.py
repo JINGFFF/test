@@ -63,27 +63,27 @@ triggerSummaryLabel      = "hltTriggerSummaryAOD"
 hltProcess = "HLT"
 if runOnMC:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017_V11_MC_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFchs.txt'
+          'Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFchs.txt',
+          'Summer16_07Aug2017_V11_MC_L2Relative_AK4PFchs.txt',
+          'Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017_V11_MC_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFPuppi.txt'
+          'Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFPuppi.txt',
+          'Summer16_07Aug2017_V11_MC_L2Relative_AK4PFPuppi.txt',
+          'Summer16_07Aug2017_V11_MC_L3Absolute_AK4PFPuppi.txt'
     ]
 else:
    jecLevelsAK4chs = [
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFchs.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFchs.txt'
+          'Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFchs.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFchs.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFchs.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFchs.txt'
     ]
    jecLevelsAK4puppi = [
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFPuppi.txt',
-          'JEC/Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFPuppi.txt'
+          'Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFPuppi.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFPuppi.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFPuppi.txt',
+          'Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFPuppi.txt'
     ]
 
 # L1 prefiring
@@ -167,7 +167,9 @@ if chsorpuppi:
 else:
       ak4jecsrc = jecLevelsAK4puppi
 
-process.load("RecoEgamma/PhotonIdentification/PhotonIDValueMapProducer_cfi")
+process.load("RecoEgamma/PhotonIdentification/photonIDValueMapProducer_cfi")
+
+#process.load("RecoEgamma/PhotonIdentification/PhotonIDValueMapProducer_cfi")
 #from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD 
 ## Example 1: If you only want to re-correct MET and get the proper uncertainties [e.g. when updating JEC]
 #runMetCorAndUncFromMiniAOD(process,

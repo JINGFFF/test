@@ -8,7 +8,7 @@ config.section_("JobType")
 config.JobType.pluginName  = 'Analysis'
 config.JobType.inputFiles =['Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFchs.txt','Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFchs.txt','Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFchs.txt','Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFchs.txt','Summer16_07Aug2017GH_V11_DATA_L1FastJet_AK4PFPuppi.txt','Summer16_07Aug2017GH_V11_DATA_L2Relative_AK4PFPuppi.txt','Summer16_07Aug2017GH_V11_DATA_L3Absolute_AK4PFPuppi.txt','Summer16_07Aug2017GH_V11_DATA_L2L3Residual_AK4PFPuppi.txt']
 
-config.JobType.psetName    = 'analysis_data_G.py'
+config.JobType.psetName    = 'analysis_data_GH.py'
 config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")
